@@ -21,6 +21,9 @@ struct MathInputEngine {
     private var operandSide = OperandSide.leftHandSide
     private var mathEquation = MathEquation(lhs: .zero)
     
+    
+    // Testing
+    
     // MARK: - LCD Display
     var lcdDisplayText = ""
     
