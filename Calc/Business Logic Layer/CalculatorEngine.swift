@@ -24,6 +24,9 @@
 //   It's the core of the calculator. The brain. It generates all of our behaviour.
 //   Architecural Layer: Business Logic Layer
 
+// NOTE: The calculator engine in terms of hierarchy it sits right at the top, taking ownership of all the
+//       behavior beneath it. It is the manager of the calculator.
+
 //   Exposed behaviour the API of the application. 
 //
 //   So let's just remember the responsiblity of the    calculator engine is going to be control the API.
@@ -48,72 +51,52 @@ struct CalculatorEngine {
         inputController = MathInputEngine()
     }
     
-
+    mutating func negatePressed() {
+        inputController.negatePressed()
+    }
     
     mutating func percentagePressed() {
-        switch operandSide {
-        case .leftHandSide:
-            mathEquation.applyPercentageToLeftHandSide()
-            lcdDisplayText = mathEquation.lhs.formatted()
-        case .rightHandSide:
-            mathEquation.applyPercentageToRightHandSide()
-            lcdDisplayText = mathEquation.rhs?.formatted() ?? "Error" // I Think we need to use the DRY principle.
-        }
+        inputController.percentagePressed()
     }
     
     // MARK: - Operations
     
     mutating func addPressed() {
-        // mathEquation.operation = MathEquation.OperationType.add // Explicitly stating but you can
-        // impliclity reduce code since the swift controller is smart enough to know what you are saying.
-        mathEquation.operation = .add
-        operandSide = .rightHandSide
+        inputController.addPressed()
     }
     
     mutating func minusPressed() {
-        mathEquation.operation = .subtract
-        operandSide = .rightHandSide
+        inputController.minusPressed()
     }
     
     mutating func multiplyPressed() {
-        mathEquation.operation = .multiply
-        operandSide = .rightHandSide
+        inputController.multiplyPressed()
     }
     
     mutating func dividePressed() {
-        mathEquation.operation = .divide
-        operandSide = .rightHandSide
+        inputController.dividePressed()
     }
     
     mutating func equalsPressed() {
-        mathEquation.execute()
-        historyLog.append(mathEquation)
+        inputController.execute() 
+        historyLog.append(inputController.mathEquation)
         printEquationToDebugConsole()
-        lcdDisplayText = mathEquation.result?.formatted() ?? "Error"
     }
     
     // MARK: - Number Input
     
     mutating func decimalPressed() {
-        
+        inputController.decimalPressed()
     }
     
     mutating func numberPressed(_ number: Int) {
-        let decimalValue = Decimal(number)
-        lcdDisplayText = decimalValue.formatted()
-        
-        switch operandSide {
-        case .leftHandSide:
-            mathEquation.lhs = decimalValue
-        case .rightHandSide:
-            mathEquation.rhs = decimalValue
-        }
+        inputController.numberPressed(number)
     }
     
     // MARK: Debug Console
     
     private func printEquationToDebugConsole() {
-        print("Equation: " + mathEquation.generatePrintOut())
+        print("Equation: " + inputController.mathEquation.generatePrintOut())
     }
     
     // MARK: - History Log
@@ -121,3 +104,5 @@ struct CalculatorEngine {
         historyLog = []
     }
 }
+
+

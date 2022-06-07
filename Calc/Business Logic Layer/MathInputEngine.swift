@@ -19,10 +19,14 @@ struct MathInputEngine {
     }
     
     private var operandSide = OperandSide.leftHandSide
-    private var mathEquation = MathEquation(lhs: .zero)
     
+    // MARK: - Math Equation
     
-    // Testing
+    // NOTE: What set is we have allowed this behavior by adding a private setter so only this file
+    //       can set a value to the math equation. The external files will be avble to reference the
+    //       the external values. 
+    private(set) var mathEquation = MathEquation(lhs: .zero)
+    
     
     // MARK: - LCD Display
     var lcdDisplayText = ""
@@ -39,6 +43,59 @@ struct MathInputEngine {
         }
     }
     
+    mutating func percentagePressed() {
+        switch operandSide {
+        case .leftHandSide:
+            mathEquation.applyPercentageToLeftHandSide()
+            lcdDisplayText = mathEquation.lhs.formatted()
+        case .rightHandSide:
+            mathEquation.applyPercentageToRightHandSide()
+            lcdDisplayText = mathEquation.rhs?.formatted() ?? "Error" // I Think we need to use the DRY principle.
+        }
+    }
+    
+    mutating func addPressed() {
+        // mathEquation.operation = MathEquation.OperationType.add // Explicitly stating but you can
+        // impliclity reduce code since the swift controller is smart enough to know what you are saying.
+        mathEquation.operation = .add
+        operandSide = .rightHandSide
+    }
+    
+    mutating func minusPressed() {
+        mathEquation.operation = .subtract
+        operandSide = .rightHandSide
+    }
+    
+    mutating func multiplyPressed() {
+        mathEquation.operation = .multiply
+        operandSide = .rightHandSide
+    }
+    
+    mutating func dividePressed() {
+        mathEquation.operation = .divide
+        operandSide = .rightHandSide
+    }
+    
+    mutating func execute() {
+        mathEquation.execute()
+        lcdDisplayText = mathEquation.result?.formatted() ?? "Error"
+    }
+    
+    mutating func decimalPressed() {
+        
+    }
+    
+    mutating func numberPressed(_ number: Int) {
+        let decimalValue = Decimal(number)
+        lcdDisplayText = decimalValue.formatted()
+        
+        switch operandSide {
+        case .leftHandSide:
+            mathEquation.lhs = decimalValue
+        case .rightHandSide:
+            mathEquation.rhs = decimalValue
+        }
+    }
     
     // MARK: - Initialized
     
