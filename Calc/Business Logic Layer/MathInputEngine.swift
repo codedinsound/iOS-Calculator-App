@@ -1,14 +1,11 @@
-//
 //  MathInputEngine.swift
 //  Calc
 //
 //  Created by Luis Santander on 6/4/22.
-//
 
 // You can call engine, controllers, managers same thing but they manage data
 
 import Foundation
-
 
 struct MathInputEngine {
     
@@ -85,18 +82,37 @@ struct MathInputEngine {
         
     }
     
-    //
+    // NOTE: A Tuple is simply two values
     
     mutating func numberPressed(_ number: Int) {
-        let decimalValue = Decimal(number)
-        lcdDisplayText = decimalValue.formatted()
+        guard number >= -9, number <= 9 else { return }
         
         switch operandSide {
         case .leftHandSide:
-            mathEquation.lhs = decimalValue
+            let tuple = appendNewNumber(number, toPreviousInput: mathEquation.lhs)
+            mathEquation.lhs = tuple.newNumber
+            lcdDisplayText = tuple.newLcDisplayText
         case .rightHandSide:
-            mathEquation.rhs = decimalValue
+            let tuple = appendNewNumber(number, toPreviousInput: mathEquation.rhs ?? .zero)
+            mathEquation.rhs = tuple.newNumber
+            lcdDisplayText = tuple.newLcDisplayText
         }
+    }
+    
+    private func appendNewNumber(_ number: Int, toPreviousInput previousInput: Decimal) -> (newNumber: Decimal, newLcDisplayText: String) {
+        let stringInput = String(number)
+        var newStringRepresentation = previousInput.isZero ? "" : lcdDisplayText
+        newStringRepresentation.append(stringInput)
+        
+        let formatter = NumberFormatter()
+        formatter.generatesDecimalNumbers = true
+        formatter.numberStyle = .decimal
+        guard let convertedNumber = formatter.number(from: newStringRepresentation) else { return (.nan, "Error") }
+        
+        let newNumber: Decimal = convertedNumber.decimalValue
+        let newLCDDisplayText = newStringRepresentation
+        
+        return (newNumber, newLCDDisplayText)
     }
     
     // MARK: - Initialized
