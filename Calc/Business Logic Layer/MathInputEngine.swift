@@ -17,6 +17,9 @@ struct MathInputEngine {
     
     private var operandSide = OperandSide.leftHandSide
     
+    // MARK: - Constants
+    let groupingSymbol = Locale.current.groupingSeparator ?? ","
+    
     // MARK: - Math Equation
     
     // NOTE: What set is we have allowed this behavior by adding a private setter so only this file
@@ -33,10 +36,12 @@ struct MathInputEngine {
         switch operandSide {
         case .leftHandSide:
             mathEquation.negateLeftHandSide()
-            lcdDisplayText = mathEquation.lhs.formatted()
+            lcdDisplayText = formatLCDDisplay(mathEquation.lhs)
         case .rightHandSide:
             mathEquation.negateRightHandSide()
-            lcdDisplayText = mathEquation.rhs?.formatted() ?? "Error"
+            lcdDisplayText = formatLCDDisplay(mathEquation.rhs)
+            
+            
         }
     }
     
@@ -44,10 +49,10 @@ struct MathInputEngine {
         switch operandSide {
         case .leftHandSide:
             mathEquation.applyPercentageToLeftHandSide()
-            lcdDisplayText = mathEquation.lhs.formatted()
+            lcdDisplayText = formatLCDDisplay(mathEquation.lhs)
         case .rightHandSide:
             mathEquation.applyPercentageToRightHandSide()
-            lcdDisplayText = mathEquation.rhs?.formatted() ?? "Error" // I Think we need to use the DRY principle.
+            lcdDisplayText = formatLCDDisplay(mathEquation.rhs) // I Think we need to use the DRY principle.
         }
     }
     
@@ -75,7 +80,7 @@ struct MathInputEngine {
     
     mutating func execute() {
         mathEquation.execute()
-        lcdDisplayText = mathEquation.result?.formatted() ?? "Error"
+        lcdDisplayText = formatLCDDisplay(mathEquation.result)
     }
     
     mutating func decimalPressed() {
@@ -104,21 +109,32 @@ struct MathInputEngine {
         var newStringRepresentation = previousInput.isZero ? "" : lcdDisplayText
         newStringRepresentation.append(stringInput)
         
+        newStringRepresentation = newStringRepresentation.replacingOccurrences(of: groupingSymbol, with: "")
+        
         let formatter = NumberFormatter()
         formatter.generatesDecimalNumbers = true
         formatter.numberStyle = .decimal
+        
+        // Converted number cannot be constructed from this.
         guard let convertedNumber = formatter.number(from: newStringRepresentation) else { return (.nan, "Error") }
         
         let newNumber: Decimal = convertedNumber.decimalValue
-        let newLCDDisplayText = newStringRepresentation
+        
+        let newLCDDisplayText = formatLCDDisplay(newNumber)
         
         return (newNumber, newLCDDisplayText)
+    }
+    
+    // MARK: LCD Display Formatting
+    private func formatLCDDisplay(_ decimal: Decimal?) -> String {
+        guard let decimal = decimal else { return "Error" }
+        return decimal.formatted()
     }
     
     // MARK: - Initialized
     
     init() {
-        lcdDisplayText = mathEquation.lhs.formatted()
+        lcdDisplayText = formatLCDDisplay(mathEquation.lhs)
     }
     
     
