@@ -19,6 +19,7 @@ struct MathInputEngine {
     
     // MARK: - Constants
     let groupingSymbol = Locale.current.groupingSeparator ?? ","
+    private let decimalSymbol = Locale.current.decimalSeparator ?? "."
     
     // MARK: - Math Equation
     
@@ -26,6 +27,7 @@ struct MathInputEngine {
     //       can set a value to the math equation. The external files will be avble to reference the
     //       the external values. 
     private(set) var mathEquation = MathEquation(lhs: .zero)
+    private var isEnteringDecimal = false
     
     
     // MARK: - LCD Display
@@ -60,22 +62,22 @@ struct MathInputEngine {
         // mathEquation.operation = MathEquation.OperationType.add // Explicitly stating but you can
         // impliclity reduce code since the swift controller is smart enough to know what you are saying.
         mathEquation.operation = .add
-        operandSide = .rightHandSide
+        startEditingRightHandSide()
     }
     
     mutating func minusPressed() {
         mathEquation.operation = .subtract
-        operandSide = .rightHandSide
+        startEditingRightHandSide()
     }
     
     mutating func multiplyPressed() {
         mathEquation.operation = .multiply
-        operandSide = .rightHandSide
+        startEditingRightHandSide()
     }
     
     mutating func dividePressed() {
         mathEquation.operation = .divide
-        operandSide = .rightHandSide
+        startEditingRightHandSide()
     }
     
     mutating func execute() {
@@ -83,8 +85,23 @@ struct MathInputEngine {
         lcdDisplayText = formatLCDDisplay(mathEquation.result)
     }
     
+    // MARK: - Editing Right Hand Side
+    private mutating func startEditingRightHandSide() {
+        operandSide = .rightHandSide
+        isEnteringDecimal = false
+    }
+    
+    
     mutating func decimalPressed() {
-        
+        isEnteringDecimal = true
+        lcdDisplayText = appendDecimalPointIfNeeded(lcdDisplayText)
+    }
+    
+    private func appendDecimalPointIfNeeded(_ string: String) -> String {
+        if string.contains(decimalSymbol) {
+            return string
+        }
+        return string.appending(decimalSymbol)
     }
     
     // NOTE: A Tuple is simply two values
@@ -105,6 +122,12 @@ struct MathInputEngine {
     }
     
     private func appendNewNumber(_ number: Int, toPreviousInput previousInput: Decimal) -> (newNumber: Decimal, newLcDisplayText: String) {
+        
+        guard isEnteringDecimal == false else {
+            return appendNewDecimalNumber(number)
+        }
+        
+        // Appends Whole Numbers
         let stringInput = String(number)
         var newStringRepresentation = previousInput.isZero ? "" : lcdDisplayText
         newStringRepresentation.append(stringInput)
@@ -119,9 +142,22 @@ struct MathInputEngine {
         guard let convertedNumber = formatter.number(from: newStringRepresentation) else { return (.nan, "Error") }
         
         let newNumber: Decimal = convertedNumber.decimalValue
-        
         let newLCDDisplayText = formatLCDDisplay(newNumber)
+    
+        return (newNumber, newLCDDisplayText)
+    }
+    
+    private func appendNewDecimalNumber(_ number: Int) -> (newNumber: Decimal, newLcDisplayText: String) {
+        let stringInput = String(number)
+        let newLCDDisplayText = lcdDisplayText.appending(stringInput)
         
+        // Convert a Number from a String
+        let formatter = NumberFormatter()
+        formatter.generatesDecimalNumbers = true
+        formatter.numberStyle = .decimal
+        guard let convertedNumber = formatter.number(from: newLCDDisplayText) else { return (.nan, "Error") }
+        
+        let newNumber: Decimal = convertedNumber.decimalValue
         return (newNumber, newLCDDisplayText)
     }
     
