@@ -23,11 +23,13 @@ struct MathEquation {
     var result: Decimal? // ? if in fact exists ? conditional.
     
     // MARK: - Execution
-    
-    
+    var executed: Bool {
+        return result != nil
+    }
     
     // mutating keyword is this function changes the struct. it mutates things.
     mutating func execute() {
+       
         
         // don't let the code continue unless
         guard

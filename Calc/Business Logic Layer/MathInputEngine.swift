@@ -18,8 +18,9 @@ struct MathInputEngine {
     private var operandSide = OperandSide.leftHandSide
     
     // MARK: - Constants
-    let groupingSymbol = Locale.current.groupingSeparator ?? ","
+    private let groupingSymbol = Locale.current.groupingSeparator ?? ","
     private let decimalSymbol = Locale.current.decimalSeparator ?? "."
+    private let minusSymbol = "-"
     
     // MARK: - Math Equation
     
@@ -29,25 +30,38 @@ struct MathInputEngine {
     private(set) var mathEquation = MathEquation(lhs: .zero)
     private var isEnteringDecimal = false
     
-    
     // MARK: - LCD Display
     var lcdDisplayText = ""
     
-    // Mark: - Extra Functions
+    // MARK: - Extra Functions
     mutating func negatePressed() {
+        guard isCompleted == false else { return }
+        
         switch operandSide {
         case .leftHandSide:
             mathEquation.negateLeftHandSide()
-            lcdDisplayText = formatLCDDisplay(mathEquation.lhs)
+            displayNegateSymbolOnDisplay(mathEquation.lhs)
         case .rightHandSide:
             mathEquation.negateRightHandSide()
-            lcdDisplayText = formatLCDDisplay(mathEquation.rhs)
-            
-            
+            displayNegateSymbolOnDisplay(mathEquation.rhs)
+        }
+    }
+    
+    // With Negating Zero
+    private mutating func displayNegateSymbolOnDisplay(_ decimal: Decimal?) {
+        guard let decimal = decimal else { return }
+
+        let isNegativeValue = decimal < 0 ? true : false
+        if isNegativeValue {
+            lcdDisplayText.addPrefixIfNeeded(minusSymbol)
+        } else {
+            lcdDisplayText.removePrefixIfNeeded(minusSymbol)
         }
     }
     
     mutating func percentagePressed() {
+        guard isCompleted == false else { return }
+        
         switch operandSide {
         case .leftHandSide:
             mathEquation.applyPercentageToLeftHandSide()
@@ -58,7 +72,9 @@ struct MathInputEngine {
         }
     }
     
+    // MARK: - Operations
     mutating func addPressed() {
+        guard isCompleted == false else { return }
         // mathEquation.operation = MathEquation.OperationType.add // Explicitly stating but you can
         // impliclity reduce code since the swift controller is smart enough to know what you are saying.
         mathEquation.operation = .add
@@ -66,21 +82,30 @@ struct MathInputEngine {
     }
     
     mutating func minusPressed() {
+        guard isCompleted == false else { return }
+        
         mathEquation.operation = .subtract
         startEditingRightHandSide()
     }
     
     mutating func multiplyPressed() {
+        guard isCompleted == false else { return }
+        
         mathEquation.operation = .multiply
         startEditingRightHandSide()
     }
     
     mutating func dividePressed() {
+        guard isCompleted == false else { return }
+        
         mathEquation.operation = .divide
         startEditingRightHandSide()
     }
     
     mutating func execute() {
+        // We Don't want this executed if code has been executed already.
+        guard isCompleted == false else { return }
+        
         mathEquation.execute()
         lcdDisplayText = formatLCDDisplay(mathEquation.result)
     }
@@ -90,7 +115,6 @@ struct MathInputEngine {
         operandSide = .rightHandSide
         isEnteringDecimal = false
     }
-    
     
     mutating func decimalPressed() {
         isEnteringDecimal = true
@@ -105,7 +129,6 @@ struct MathInputEngine {
     }
     
     // NOTE: A Tuple is simply two values
-    
     mutating func numberPressed(_ number: Int) {
         guard number >= -9, number <= 9 else { return }
         
@@ -167,11 +190,15 @@ struct MathInputEngine {
         return decimal.formatted()
     }
     
+    // MARK: - Computed Properties
+    var isCompleted: Bool {
+        return mathEquation.executed
+    }
+    
     // MARK: - Initialized
     
     init() {
         lcdDisplayText = formatLCDDisplay(mathEquation.lhs)
     }
-    
     
 }

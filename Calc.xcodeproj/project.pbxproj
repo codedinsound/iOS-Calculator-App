@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DA0FE567286E86670045DB2A /* String+Prefix.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0FE566286E86670045DB2A /* String+Prefix.swift */; };
 		DA143D2828446472000CAEA8 /* CalculatorTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA143D2728446472000CAEA8 /* CalculatorTheme.swift */; };
 		DA143D2A28446553000CAEA8 /* UIColor+HexValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA143D2928446553000CAEA8 /* UIColor+HexValue.swift */; };
 		DA17C559284540C700AA2D2E /* Resources in Resources */ = {isa = PBXBuildFile; fileRef = DA17C558284540C700AA2D2E /* Resources */; };
@@ -41,6 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DA0FE566286E86670045DB2A /* String+Prefix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Prefix.swift"; sourceTree = "<group>"; };
 		DA143D2728446472000CAEA8 /* CalculatorTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorTheme.swift; sourceTree = "<group>"; };
 		DA143D2928446553000CAEA8 /* UIColor+HexValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+HexValue.swift"; sourceTree = "<group>"; };
 		DA17C558284540C700AA2D2E /* Resources */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Resources; sourceTree = "<group>"; };
@@ -86,6 +88,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DA0FE568286E87A80045DB2A /* Swift Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Swift Extensions";
+			sourceTree = "<group>";
+		};
 		DA97046A2848544100207D5C /* Presentation Layer */ = {
 			isa = PBXGroup;
 			children = (
@@ -165,11 +174,13 @@
 		DAAD6A3B28442CD000282873 /* Calc */ = {
 			isa = PBXGroup;
 			children = (
+				DA0FE568286E87A80045DB2A /* Swift Extensions */,
 				DA97046A2848544100207D5C /* Presentation Layer */,
 				DA97046E2848554D00207D5C /* Business Logic Layer */,
 				DA97046F2848558E00207D5C /* Data Layer */,
 				DAAD6A4528442CD200282873 /* Assets.xcassets */,
 				DAAD6A4A28442CD200282873 /* Info.plist */,
+				DA0FE566286E86670045DB2A /* String+Prefix.swift */,
 			);
 			path = Calc;
 			sourceTree = "<group>";
@@ -319,6 +330,7 @@
 				DA5CB5E528458991004579BA /* MathEquation.swift in Sources */,
 				DAEE1ABC284BE650005E4E33 /* MathInputEngine.swift in Sources */,
 				DAAD6A4128442CD000282873 /* CalcViewController.swift in Sources */,
+				DA0FE567286E86670045DB2A /* String+Prefix.swift in Sources */,
 				DA143D2828446472000CAEA8 /* CalculatorTheme.swift in Sources */,
 				DAAD6A3D28442CD000282873 /* AppDelegate.swift in Sources */,
 				DAB208B52846EB42006A4E73 /* CalculatorEngine.swift in Sources */,
