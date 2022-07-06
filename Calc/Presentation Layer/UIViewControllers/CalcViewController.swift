@@ -31,15 +31,19 @@ class CalcViewController: UIViewController {
     @IBOutlet weak var minusButton: UIButton!
     
     @IBOutlet weak var decimalButton: UIButton!
+    
     // MARK: - Color Themes
-    /*
-     default color styles for the calculator.
-     gray:      #a6a6a6
-     dark gray: #333333
-     orange:    #ff9f0a
-     */
-    var currentTheme: CalculatorTheme {
+    
+    private var currentTheme: CalculatorTheme {
+        return purpleTheme
+    }
+    
+    private var darkTheme: CalculatorTheme {
         return CalculatorTheme(backgroundColor: "#000000", displayColor: "#FFFFFF", extraFunctionColor: "#a6a6a6", extraFunctionTitleColor: "FFFFFF", operationFunctionColor: "#ff9f0a", operationFunctionTitleColor: "#FFFFFF", pinPadFunctionColor: "#333333", pinPadFunctionTitleColor: "FFFFFF", fontSize: 40)
+    }
+    
+    private var purpleTheme: CalculatorTheme {
+        return CalculatorTheme(backgroundColor: "#000000", displayColor: "#FFFFFF", extraFunctionColor: "#a6a6a6", extraFunctionTitleColor: "FFFFFF", operationFunctionColor: "#7550FE", operationFunctionTitleColor: "#FFFFFF", pinPadFunctionColor: "#333333", pinPadFunctionTitleColor: "FFFFFF", fontSize: 40)
     }
     
     // MARK: - Calculator Engine
