@@ -15,11 +15,11 @@ struct CalculatorTheme {
     let extraFunctionColor: String
     let extraFunctionTitleColor: String
     
-    let operationFunctionColor: String
-    let operationFunctionTitleColor: String
+    let operationColor: String
+    let operationTitleColor: String
     
-    let pinPadFunctionColor: String
-    let pinPadFunctionTitleColor: String
+    let pinpadColor: String
+    let pinpadTitleColor: String
     
     let fontSize: Float
 }

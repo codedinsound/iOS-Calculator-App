@@ -11,6 +11,16 @@
 		DA143D2828446472000CAEA8 /* CalculatorTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA143D2728446472000CAEA8 /* CalculatorTheme.swift */; };
 		DA143D2A28446553000CAEA8 /* UIColor+HexValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA143D2928446553000CAEA8 /* UIColor+HexValue.swift */; };
 		DA17C559284540C700AA2D2E /* Resources in Resources */ = {isa = PBXBuildFile; fileRef = DA17C558284540C700AA2D2E /* Resources */; };
+		DA32D8E72880EBDD0001AAB1 /* pinkTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA32D8DD2880EBDD0001AAB1 /* pinkTheme.swift */; };
+		DA32D8E82880EBDD0001AAB1 /* darkBlueTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA32D8DE2880EBDD0001AAB1 /* darkBlueTheme.swift */; };
+		DA32D8E92880EBDD0001AAB1 /* purpleTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA32D8DF2880EBDD0001AAB1 /* purpleTheme.swift */; };
+		DA32D8EA2880EBDD0001AAB1 /* lightBlueTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA32D8E02880EBDD0001AAB1 /* lightBlueTheme.swift */; };
+		DA32D8EB2880EBDD0001AAB1 /* lightTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA32D8E12880EBDD0001AAB1 /* lightTheme.swift */; };
+		DA32D8EC2880EBDD0001AAB1 /* washedOutTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA32D8E22880EBDD0001AAB1 /* washedOutTheme.swift */; };
+		DA32D8ED2880EBDD0001AAB1 /* darkTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA32D8E32880EBDD0001AAB1 /* darkTheme.swift */; };
+		DA32D8EE2880EBDD0001AAB1 /* electroTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA32D8E42880EBDD0001AAB1 /* electroTheme.swift */; };
+		DA32D8EF2880EBDD0001AAB1 /* bloodOrangeTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA32D8E52880EBDD0001AAB1 /* bloodOrangeTheme.swift */; };
+		DA32D8F02880EBDD0001AAB1 /* orangeTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA32D8E62880EBDD0001AAB1 /* orangeTheme.swift */; };
 		DA5CB5E528458991004579BA /* MathEquation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5CB5E428458991004579BA /* MathEquation.swift */; };
 		DAAD6A3D28442CD000282873 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAAD6A3C28442CD000282873 /* AppDelegate.swift */; };
 		DAAD6A3F28442CD000282873 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAAD6A3E28442CD000282873 /* SceneDelegate.swift */; };
@@ -46,6 +56,16 @@
 		DA143D2728446472000CAEA8 /* CalculatorTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorTheme.swift; sourceTree = "<group>"; };
 		DA143D2928446553000CAEA8 /* UIColor+HexValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+HexValue.swift"; sourceTree = "<group>"; };
 		DA17C558284540C700AA2D2E /* Resources */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Resources; sourceTree = "<group>"; };
+		DA32D8DD2880EBDD0001AAB1 /* pinkTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = pinkTheme.swift; sourceTree = "<group>"; };
+		DA32D8DE2880EBDD0001AAB1 /* darkBlueTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = darkBlueTheme.swift; sourceTree = "<group>"; };
+		DA32D8DF2880EBDD0001AAB1 /* purpleTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = purpleTheme.swift; sourceTree = "<group>"; };
+		DA32D8E02880EBDD0001AAB1 /* lightBlueTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = lightBlueTheme.swift; sourceTree = "<group>"; };
+		DA32D8E12880EBDD0001AAB1 /* lightTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = lightTheme.swift; sourceTree = "<group>"; };
+		DA32D8E22880EBDD0001AAB1 /* washedOutTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = washedOutTheme.swift; sourceTree = "<group>"; };
+		DA32D8E32880EBDD0001AAB1 /* darkTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = darkTheme.swift; sourceTree = "<group>"; };
+		DA32D8E42880EBDD0001AAB1 /* electroTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = electroTheme.swift; sourceTree = "<group>"; };
+		DA32D8E52880EBDD0001AAB1 /* bloodOrangeTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = bloodOrangeTheme.swift; sourceTree = "<group>"; };
+		DA32D8E62880EBDD0001AAB1 /* orangeTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = orangeTheme.swift; sourceTree = "<group>"; };
 		DA5CB5E428458991004579BA /* MathEquation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathEquation.swift; sourceTree = "<group>"; };
 		DAAD6A3928442CD000282873 /* Calc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Calc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAAD6A3C28442CD000282873 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -144,6 +164,16 @@
 		DA97046F2848558E00207D5C /* Data Layer */ = {
 			isa = PBXGroup;
 			children = (
+				DA32D8E32880EBDD0001AAB1 /* darkTheme.swift */,
+				DA32D8DF2880EBDD0001AAB1 /* purpleTheme.swift */,
+				DA32D8E52880EBDD0001AAB1 /* bloodOrangeTheme.swift */,
+				DA32D8DE2880EBDD0001AAB1 /* darkBlueTheme.swift */,
+				DA32D8E42880EBDD0001AAB1 /* electroTheme.swift */,
+				DA32D8E02880EBDD0001AAB1 /* lightBlueTheme.swift */,
+				DA32D8E12880EBDD0001AAB1 /* lightTheme.swift */,
+				DA32D8E62880EBDD0001AAB1 /* orangeTheme.swift */,
+				DA32D8DD2880EBDD0001AAB1 /* pinkTheme.swift */,
+				DA32D8E22880EBDD0001AAB1 /* washedOutTheme.swift */,
 				DA143D2728446472000CAEA8 /* CalculatorTheme.swift */,
 				DA5CB5E428458991004579BA /* MathEquation.swift */,
 			);
@@ -326,15 +356,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA32D8F02880EBDD0001AAB1 /* orangeTheme.swift in Sources */,
 				DA143D2A28446553000CAEA8 /* UIColor+HexValue.swift in Sources */,
 				DA5CB5E528458991004579BA /* MathEquation.swift in Sources */,
+				DA32D8EB2880EBDD0001AAB1 /* lightTheme.swift in Sources */,
 				DAEE1ABC284BE650005E4E33 /* MathInputEngine.swift in Sources */,
+				DA32D8E82880EBDD0001AAB1 /* darkBlueTheme.swift in Sources */,
 				DAAD6A4128442CD000282873 /* CalcViewController.swift in Sources */,
 				DA0FE567286E86670045DB2A /* String+Prefix.swift in Sources */,
 				DA143D2828446472000CAEA8 /* CalculatorTheme.swift in Sources */,
+				DA32D8EA2880EBDD0001AAB1 /* lightBlueTheme.swift in Sources */,
 				DAAD6A3D28442CD000282873 /* AppDelegate.swift in Sources */,
 				DAB208B52846EB42006A4E73 /* CalculatorEngine.swift in Sources */,
 				DAAD6A3F28442CD000282873 /* SceneDelegate.swift in Sources */,
+				DA32D8E72880EBDD0001AAB1 /* pinkTheme.swift in Sources */,
+				DA32D8EC2880EBDD0001AAB1 /* washedOutTheme.swift in Sources */,
+				DA32D8EF2880EBDD0001AAB1 /* bloodOrangeTheme.swift in Sources */,
+				DA32D8E92880EBDD0001AAB1 /* purpleTheme.swift in Sources */,
+				DA32D8ED2880EBDD0001AAB1 /* darkTheme.swift in Sources */,
+				DA32D8EE2880EBDD0001AAB1 /* electroTheme.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

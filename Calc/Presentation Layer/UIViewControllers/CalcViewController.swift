@@ -35,16 +35,9 @@ class CalcViewController: UIViewController {
     // MARK: - Color Themes
     
     private var currentTheme: CalculatorTheme {
-        return purpleTheme
+        return bloodOrangeTheme
     }
     
-    private var darkTheme: CalculatorTheme {
-        return CalculatorTheme(backgroundColor: "#000000", displayColor: "#FFFFFF", extraFunctionColor: "#a6a6a6", extraFunctionTitleColor: "FFFFFF", operationFunctionColor: "#ff9f0a", operationFunctionTitleColor: "#FFFFFF", pinPadFunctionColor: "#333333", pinPadFunctionTitleColor: "FFFFFF", fontSize: 40)
-    }
-    
-    private var purpleTheme: CalculatorTheme {
-        return CalculatorTheme(backgroundColor: "#000000", displayColor: "#FFFFFF", extraFunctionColor: "#a6a6a6", extraFunctionTitleColor: "FFFFFF", operationFunctionColor: "#7550FE", operationFunctionTitleColor: "#FFFFFF", pinPadFunctionColor: "#333333", pinPadFunctionTitleColor: "FFFFFF", fontSize: 40)
-    }
     
     // MARK: - Calculator Engine
     private var calculatorEngine = CalculatorEngine()
@@ -108,16 +101,16 @@ class CalcViewController: UIViewController {
     private func decorateOperationButton(_ button: UIButton) {
         decorateButton(button)
         
-        button.tintColor = UIColor(hex: currentTheme.operationFunctionColor)
-        button.setTitleColor(UIColor(hex: currentTheme.operationFunctionTitleColor), for: .normal)
+        button.tintColor = UIColor(hex: currentTheme.operationColor)
+        button.setTitleColor(UIColor(hex: currentTheme.operationTitleColor), for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: CGFloat(currentTheme.fontSize))
     }
     
     private func decoratePinPadButton(_ button: UIButton, _ usingSlicedImage: Bool = false) {
         decorateButton(button, usingSlicedImage)
         
-        button.tintColor = UIColor(hex: currentTheme.pinPadFunctionColor)
-        button.setTitleColor(UIColor(hex: currentTheme.pinPadFunctionTitleColor), for: .normal)
+        button.tintColor = UIColor(hex: currentTheme.pinpadColor)
+        button.setTitleColor(UIColor(hex: currentTheme.pinpadTitleColor), for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: CGFloat(currentTheme.fontSize))
     }
     
