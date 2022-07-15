@@ -115,6 +115,23 @@
 			path = "Swift Extensions";
 			sourceTree = "<group>";
 		};
+		DA32D8F12880F77A0001AAB1 /* Color Themes */ = {
+			isa = PBXGroup;
+			children = (
+				DA32D8E32880EBDD0001AAB1 /* darkTheme.swift */,
+				DA32D8DF2880EBDD0001AAB1 /* purpleTheme.swift */,
+				DA32D8E52880EBDD0001AAB1 /* bloodOrangeTheme.swift */,
+				DA32D8DE2880EBDD0001AAB1 /* darkBlueTheme.swift */,
+				DA32D8E42880EBDD0001AAB1 /* electroTheme.swift */,
+				DA32D8E02880EBDD0001AAB1 /* lightBlueTheme.swift */,
+				DA32D8E12880EBDD0001AAB1 /* lightTheme.swift */,
+				DA32D8E62880EBDD0001AAB1 /* orangeTheme.swift */,
+				DA32D8DD2880EBDD0001AAB1 /* pinkTheme.swift */,
+				DA32D8E22880EBDD0001AAB1 /* washedOutTheme.swift */,
+			);
+			path = "Color Themes";
+			sourceTree = "<group>";
+		};
 		DA97046A2848544100207D5C /* Presentation Layer */ = {
 			isa = PBXGroup;
 			children = (
@@ -164,18 +181,9 @@
 		DA97046F2848558E00207D5C /* Data Layer */ = {
 			isa = PBXGroup;
 			children = (
-				DA32D8E32880EBDD0001AAB1 /* darkTheme.swift */,
-				DA32D8DF2880EBDD0001AAB1 /* purpleTheme.swift */,
-				DA32D8E52880EBDD0001AAB1 /* bloodOrangeTheme.swift */,
-				DA32D8DE2880EBDD0001AAB1 /* darkBlueTheme.swift */,
-				DA32D8E42880EBDD0001AAB1 /* electroTheme.swift */,
-				DA32D8E02880EBDD0001AAB1 /* lightBlueTheme.swift */,
-				DA32D8E12880EBDD0001AAB1 /* lightTheme.swift */,
-				DA32D8E62880EBDD0001AAB1 /* orangeTheme.swift */,
-				DA32D8DD2880EBDD0001AAB1 /* pinkTheme.swift */,
-				DA32D8E22880EBDD0001AAB1 /* washedOutTheme.swift */,
 				DA143D2728446472000CAEA8 /* CalculatorTheme.swift */,
 				DA5CB5E428458991004579BA /* MathEquation.swift */,
+				DA32D8F12880F77A0001AAB1 /* Color Themes */,
 			);
 			path = "Data Layer";
 			sourceTree = "<group>";
@@ -208,8 +216,8 @@
 				DA97046A2848544100207D5C /* Presentation Layer */,
 				DA97046E2848554D00207D5C /* Business Logic Layer */,
 				DA97046F2848558E00207D5C /* Data Layer */,
-				DAAD6A4528442CD200282873 /* Assets.xcassets */,
 				DAAD6A4A28442CD200282873 /* Info.plist */,
+				DAAD6A4528442CD200282873 /* Assets.xcassets */,
 				DA0FE566286E86670045DB2A /* String+Prefix.swift */,
 			);
 			path = Calc;

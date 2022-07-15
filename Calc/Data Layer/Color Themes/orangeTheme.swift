@@ -2,19 +2,21 @@ import Foundation
 
 extension CalcViewController {
     
-    var bloodOrangeTheme: CalculatorTheme {
+    var orangeTheme: CalculatorTheme {
         return CalculatorTheme(
-            backgroundColor:                "#4A1D41",
+            backgroundColor:                "#DC6969",
             displayColor:                   "#FFFFFF",
                                
-            extraFunctionColor:             "#9C3766",
+            extraFunctionColor:             "#D05353",
             extraFunctionTitleColor:        "#FFFFFF",
                                
-            operationColor:                 "#8D3362",
+            operationColor:                 "#CC4D4D",
             operationTitleColor:            "#FFFFFF",
                                
-            pinpadColor:                    "#C64661",
+            pinpadColor:                    "#C94848",
             pinpadTitleColor:               "#FFFFFF",
+            
+            statusBarStyle: .light,
             
             fontSize: 40)
     }
